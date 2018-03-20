@@ -10,6 +10,7 @@
 		F988AF04205D4F2D00C93F03 /* KSNumericTextField.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F988AEFA205D4F2D00C93F03 /* KSNumericTextField.framework */; };
 		F988AF09205D4F2D00C93F03 /* KSNumericTextFieldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F988AF08205D4F2D00C93F03 /* KSNumericTextFieldTests.swift */; };
 		F988AF0B205D4F2D00C93F03 /* KSNumericTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = F988AEFD205D4F2D00C93F03 /* KSNumericTextField.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F9C6E97F20610EEA0092B549 /* KSNumericTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C6E97E20610EEA0092B549 /* KSNumericTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 		F988AF03205D4F2D00C93F03 /* KSNumericTextFieldTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KSNumericTextFieldTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F988AF08205D4F2D00C93F03 /* KSNumericTextFieldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KSNumericTextFieldTests.swift; sourceTree = "<group>"; };
 		F988AF0A205D4F2D00C93F03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F9C6E97E20610EEA0092B549 /* KSNumericTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KSNumericTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 		F988AEFC205D4F2D00C93F03 /* KSNumericTextField */ = {
 			isa = PBXGroup;
 			children = (
+				F9C6E97D20610ED50092B549 /* Sources */,
 				F988AEFD205D4F2D00C93F03 /* KSNumericTextField.h */,
 				F988AEFE205D4F2D00C93F03 /* Info.plist */,
 			);
@@ -84,6 +87,14 @@
 				F988AF0A205D4F2D00C93F03 /* Info.plist */,
 			);
 			path = KSNumericTextFieldTests;
+			sourceTree = "<group>";
+		};
+		F9C6E97D20610ED50092B549 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				F9C6E97E20610EEA0092B549 /* KSNumericTextField.swift */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,6 +159,7 @@
 				TargetAttributes = {
 					F988AEF9205D4F2D00C93F03 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 					F988AF02205D4F2D00C93F03 = {
@@ -196,6 +208,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9C6E97F20610EEA0092B549 /* KSNumericTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,6 +347,7 @@
 		F988AF0F205D4F2D00C93F03 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -343,10 +357,12 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = KSNumericTextField/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.LeeKahSeng.KSNumericTextField;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -355,6 +371,7 @@
 		F988AF10205D4F2D00C93F03 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -364,6 +381,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = KSNumericTextField/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.LeeKahSeng.KSNumericTextField;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -376,6 +394,7 @@
 		F988AF12205D4F2D00C93F03 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SM42V25455;
 				INFOPLIST_FILE = KSNumericTextFieldTests/Info.plist;
@@ -390,6 +409,7 @@
 		F988AF13205D4F2D00C93F03 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SM42V25455;
 				INFOPLIST_FILE = KSNumericTextFieldTests/Info.plist;
