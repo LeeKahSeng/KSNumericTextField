@@ -28,7 +28,7 @@
 
 import UIKit
 
-@objc protocol KSNumericTextFieldDelegate {
+@objc public protocol KSNumericTextFieldDelegate {
     
     @available(iOS 2.0, *)
     @objc optional func textFieldShouldBeginEditing(_ textField: KSNumericTextField) -> Bool
@@ -55,16 +55,16 @@ import UIKit
     @objc optional func textFieldDidEndEditing(_ textField: KSNumericTextField, reason: UITextFieldDidEndEditingReason)
 }
 
-class KSNumericTextField: UITextField {
+public class KSNumericTextField: UITextField {
     
-    var numericTextFieldDelegate: KSNumericTextFieldDelegate?
+    public var numericTextFieldDelegate: KSNumericTextFieldDelegate?
     
     @IBInspectable var maxWholeNumberDigit: Int = 3
     @IBInspectable var maxDecimalDigit: Int = 2
     
     private let separator = Locale.current.decimalSeparator!
     
-    override var text: String? {
+    override public var text: String? {
         get {
             return super.text
         }
@@ -78,7 +78,7 @@ class KSNumericTextField: UITextField {
         }
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required public init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
         
         commonInit()
@@ -97,13 +97,27 @@ class KSNumericTextField: UITextField {
         maxDecimalDigit = decimalDigit
     }
     
-    override func didMoveToWindow() {
+    override public func didMoveToWindow() {
         super.didMoveToWindow()
         
         if !isValid(super.text, maxWholeNumberDigit: maxWholeNumberDigit, maxDecimalDigit: maxDecimalDigit, decimalSeparator: separator) {
             
             // String format is not valid
             super.text = ""
+        }
+    }
+    
+    
+    // Note: Override delegate to make sure super.delegate is always self
+    override public var delegate: UITextFieldDelegate? {
+        get {
+            return super.delegate
+        }
+        
+        set {
+            if let d = newValue, d.isKind(of: KSNumericTextField.self) {
+                super.delegate = newValue
+            }
         }
     }
 }
@@ -175,7 +189,7 @@ extension KSNumericTextField {
 // MARK:- UITextFieldDelegate
 extension KSNumericTextField: UITextFieldDelegate {
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         if let result = numericTextFieldDelegate?.textField?(self, shouldChangeCharactersIn: range, replacementString: string), result == false {
             
@@ -196,14 +210,14 @@ extension KSNumericTextField: UITextFieldDelegate {
         }
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
+    public func textFieldDidEndEditing(_ textField: UITextField) {
         
         text = processStringAfterEndEditing(textField.text)
         
         numericTextFieldDelegate?.textFieldDidEndEditing?(self)
     }
     
-    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+    public func textFieldShouldClear(_ textField: UITextField) -> Bool {
         
         // Handle clear button tapped
         if let result = numericTextFieldDelegate?.textFieldShouldClear?(self), result == false {
@@ -217,7 +231,7 @@ extension KSNumericTextField: UITextFieldDelegate {
         }
     }
     
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+    public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         
         if let result = numericTextFieldDelegate?.textFieldShouldBeginEditing?(self) {
             return result
@@ -226,11 +240,11 @@ extension KSNumericTextField: UITextFieldDelegate {
         return true
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
+    public func textFieldDidBeginEditing(_ textField: UITextField) {
         numericTextFieldDelegate?.textFieldDidBeginEditing?(self)
     }
     
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+    public func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         
         if let result = numericTextFieldDelegate?.textFieldShouldEndEditing?(self) {
             return result
@@ -239,7 +253,7 @@ extension KSNumericTextField: UITextFieldDelegate {
         return true
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let result = numericTextFieldDelegate?.textFieldShouldReturn?(self) {
             return result
         }
@@ -248,7 +262,7 @@ extension KSNumericTextField: UITextFieldDelegate {
     }
     
     @available(iOS 10.0, *)
-    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
+    public func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
         
         text = processStringAfterEndEditing(textField.text)
         
