@@ -59,8 +59,22 @@ public class KSNumericTextField: UITextField {
     
     public var numericTextFieldDelegate: KSNumericTextFieldDelegate?
     
-    @IBInspectable var maxIntegerDigit: Int = 3
-    @IBInspectable var maxFractionDigit: Int = 2
+    @IBInspectable var maxIntegerDigit: Int = 3 {
+        didSet {
+            if maxIntegerDigit < 1 {
+                fatalError("maxIntegerDigit must be larger than 0")
+                
+            }
+        }
+    }
+    @IBInspectable var maxFractionDigit: Int = 2 {
+        didSet {
+            if maxFractionDigit < 1 {
+                fatalError("maxFractionDigit must be larger than 0")
+                
+            }
+        }
+    }
     
     private let separator = Locale.current.decimalSeparator!
     
