@@ -70,7 +70,7 @@ public class KSNumericTextField: UITextField {
         }
         
         set {
-            if isValid(newValue, maxWholeNumberDigit: maxIntegerDigit, maxDecimalDigit: maxFractionDigit, decimalSeparator: separator) {
+            if isValid(newValue, maxIntegerDigit: maxIntegerDigit, maxFractionDigit: maxFractionDigit, decimalSeparator: separator) {
                 
                 // String format is valid
                 super.text = newValue
@@ -90,17 +90,17 @@ public class KSNumericTextField: UITextField {
         commonInit()
     }
     
-    convenience init(withMaxWholeNumberDigit digit: Int, maxDecimalDigit decimalDigit: Int) {
+    convenience init(withMaxIntegerDigit integerDigit: Int, maxFractionDigit fractionDigit: Int) {
         self.init(frame: CGRect.zero)
         
-        maxIntegerDigit = digit
-        maxFractionDigit = decimalDigit
+        maxIntegerDigit = integerDigit
+        maxFractionDigit = fractionDigit
     }
     
     override public func didMoveToWindow() {
         super.didMoveToWindow()
         
-        let isTextValid = isValid(super.text, maxWholeNumberDigit: maxIntegerDigit, maxDecimalDigit: maxFractionDigit, decimalSeparator: separator)
+        let isTextValid = isValid(super.text, maxIntegerDigit: maxIntegerDigit, maxFractionDigit: maxFractionDigit, decimalSeparator: separator)
         if !isTextValid {
             // Remove string in textField when invalid string was set in interface builder
             super.text = ""
@@ -149,17 +149,17 @@ extension KSNumericTextField {
     ///
     /// - Parameters:
     ///   - string: string to validate
-    ///   - wholeNumberDigit: maximum whole number digit allow
-    ///   - decimalDigit: maximum decimal digit allow
+    ///   - maxIntegerDigit: maximum whole number digit allow
+    ///   - maxFractionDigit: maximum decimal digit allow
     ///   - separator: decimal separator
     /// - Returns: is the string have valid numeric value
-    private func isValid(_ string: String?, maxWholeNumberDigit wholeNumberDigit: Int, maxDecimalDigit decimalDigit: Int, decimalSeparator separator: String) -> Bool {
+    private func isValid(_ string: String?, maxIntegerDigit integerDigit: Int, maxFractionDigit fractionDigit: Int, decimalSeparator separator: String) -> Bool {
         
         guard let value = string else {
             return false
         }
         
-        let pattern = "^\\d{0,\(wholeNumberDigit)}(\\\(separator)\\d{0,\(decimalDigit)})?$"
+        let pattern = "^\\d{0,\(integerDigit)}(\\\(separator)\\d{0,\(fractionDigit)})?$"
         
         do {
             let regex = try NSRegularExpression(pattern: pattern, options: .caseInsensitive)
