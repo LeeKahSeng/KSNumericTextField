@@ -100,9 +100,9 @@ public class KSNumericTextField: UITextField {
     override public func didMoveToWindow() {
         super.didMoveToWindow()
         
-        if !isValid(super.text, maxWholeNumberDigit: maxWholeNumberDigit, maxDecimalDigit: maxDecimalDigit, decimalSeparator: separator) {
-            
-            // String format is not valid
+        let isTextValid = isValid(super.text, maxWholeNumberDigit: maxWholeNumberDigit, maxDecimalDigit: maxDecimalDigit, decimalSeparator: separator)
+        if !isTextValid {
+            // Remove string in textField when invalid string was set in interface builder
             super.text = ""
         }
     }
@@ -122,11 +122,26 @@ public class KSNumericTextField: UITextField {
     }
 }
 
+// MARK:- Public functions
+extension KSNumericTextField {
+    
+    /// Set string to textField and return boolean to indicate the string is it in valid format
+    ///
+    /// - Parameter value: string to set to textField
+    /// - Returns: true: string is valid, false: string is invalid
+    public func setText(_ value: String?) -> Bool {
+        
+        text = value
+        return text == value
+    }
+}
+
 // MARK:- Private functions
 extension KSNumericTextField {
     
     private func commonInit() {
         
+        keyboardType = .decimalPad
         delegate = self
     }
     
@@ -200,11 +215,23 @@ extension KSNumericTextField: UITextFieldDelegate {
             
             // Validate input string when user type / cut & paste
             
-            let currentText = textField.text ?? ""
-            let newText = (currentText as NSString).replacingCharacters(in: range, with: string)
+            // Remove leading & trailing white space
+            let enteredText = string.trimmingCharacters(in: .whitespacesAndNewlines)
             
-            // Set newText to text and let text set observer to check is newText format valid
-            text = newText
+            let currentText = textField.text ?? ""
+            let newText = (currentText as NSString).replacingCharacters(in: range, with: enteredText)
+            
+            // Set newText to text -> text set observer will check is newText format valid
+            let isNewTextValid = setText(newText)
+            if  isNewTextValid {
+                
+                // newText have valid format, thus set cursor to correct position
+                let cursorPosition = range.location
+                if let newPosition = textField.position(from: textField.beginningOfDocument, offset: cursorPosition + enteredText.count) {
+                    
+                    textField.selectedTextRange = textField.textRange(from: newPosition, to: newPosition)
+                }
+            }
             
             return false
         }
