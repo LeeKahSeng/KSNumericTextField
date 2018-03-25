@@ -59,8 +59,8 @@ public class KSNumericTextField: UITextField {
     
     public var numericTextFieldDelegate: KSNumericTextFieldDelegate?
     
-    @IBInspectable var maxWholeNumberDigit: Int = 3
-    @IBInspectable var maxDecimalDigit: Int = 2
+    @IBInspectable var maxIntegerDigit: Int = 3
+    @IBInspectable var maxFractionDigit: Int = 2
     
     private let separator = Locale.current.decimalSeparator!
     
@@ -70,7 +70,7 @@ public class KSNumericTextField: UITextField {
         }
         
         set {
-            if isValid(newValue, maxWholeNumberDigit: maxWholeNumberDigit, maxDecimalDigit: maxDecimalDigit, decimalSeparator: separator) {
+            if isValid(newValue, maxWholeNumberDigit: maxIntegerDigit, maxDecimalDigit: maxFractionDigit, decimalSeparator: separator) {
                 
                 // String format is valid
                 super.text = newValue
@@ -93,14 +93,14 @@ public class KSNumericTextField: UITextField {
     convenience init(withMaxWholeNumberDigit digit: Int, maxDecimalDigit decimalDigit: Int) {
         self.init(frame: CGRect.zero)
         
-        maxWholeNumberDigit = digit
-        maxDecimalDigit = decimalDigit
+        maxIntegerDigit = digit
+        maxFractionDigit = decimalDigit
     }
     
     override public func didMoveToWindow() {
         super.didMoveToWindow()
         
-        let isTextValid = isValid(super.text, maxWholeNumberDigit: maxWholeNumberDigit, maxDecimalDigit: maxDecimalDigit, decimalSeparator: separator)
+        let isTextValid = isValid(super.text, maxWholeNumberDigit: maxIntegerDigit, maxDecimalDigit: maxFractionDigit, decimalSeparator: separator)
         if !isTextValid {
             // Remove string in textField when invalid string was set in interface builder
             super.text = ""
