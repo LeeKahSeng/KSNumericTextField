@@ -24,7 +24,6 @@
 //  SOFTWARE.
 //
 
-// Note: Currently have know issue where cursor will go to end of text everytime user type on it. Refer this for solution http://stackoverflow.com/questions/34922331/getting-and-setting-cursor-position-of-uitextfield-and-uitextview-in-swift
 
 import UIKit
 
@@ -59,22 +58,15 @@ public class KSNumericTextField: UITextField {
     
     public var numericTextFieldDelegate: KSNumericTextFieldDelegate?
     
-    @IBInspectable var maxIntegerDigit: Int = 3 {
+    @IBInspectable public var maxIntegerDigit: Int = 3 {
         didSet {
             if maxIntegerDigit < 1 {
                 fatalError("maxIntegerDigit must be larger than 0")
-                
+
             }
         }
     }
-    @IBInspectable var maxFractionDigit: Int = 2 {
-        didSet {
-            if maxFractionDigit < 1 {
-                fatalError("maxFractionDigit must be larger than 0")
-                
-            }
-        }
-    }
+    @IBInspectable public var maxFractionDigit: Int = 2
     
     private let separator = Locale.current.decimalSeparator!
     
@@ -173,7 +165,13 @@ extension KSNumericTextField {
             return false
         }
         
-        let pattern = "^\\d{0,\(integerDigit)}(\\\(separator)\\d{0,\(fractionDigit)})?$"
+        // Default regex pattern
+        var pattern = "^\\d{0,\(integerDigit)}(\\\(separator)\\d{0,\(fractionDigit)})?$"
+        
+        if maxFractionDigit == 0 {
+            // Use another regex pattern when fractionDigit == 0
+            pattern = "^[0-9]{0,\(maxIntegerDigit)}$"
+        }
         
         do {
             let regex = try NSRegularExpression(pattern: pattern, options: .caseInsensitive)
