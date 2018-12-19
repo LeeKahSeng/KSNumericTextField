@@ -7,12 +7,18 @@
 //
 
 import UIKit
+import KSNumericTextField
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var doubleDigitTextField: KSNumericTextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        // Set integer digit & fraction digit
+        doubleDigitTextField.maxIntegerDigit = 2
+        doubleDigitTextField.maxFractionDigit = 0
     }
 
     override func didReceiveMemoryWarning() {
