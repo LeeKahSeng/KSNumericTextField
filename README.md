@@ -48,8 +48,8 @@ carthage update
 ## How to use
 ### Storyboard
 1. Drag a UITextField to your view controller.
-2. Open Indentity Inspector and change button class to KSNumericTextField.
-3. Open Indentity Inspector and change button module to KSNumericTextField. (This step only required when install using CocoaPods or Carthage)
+2. Open Indentity Inspector and change text field class to KSNumericTextField.
+3. Open Indentity Inspector and change text field module to KSNumericTextField. (This step only required when install using CocoaPods or Carthage)
 4. Open Attribute Inspector to change 'Max Integer Digit' and 'Max Fraction Digit' base on you needs.
 ![](README-Assets/AttributeInspector.png)
 5. Build & run.
