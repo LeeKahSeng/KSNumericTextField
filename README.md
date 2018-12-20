@@ -54,6 +54,8 @@ carthage update
 ![](README-Assets/AttributeInspector.png)
 5. Build & run.
 
+**Note: If using Carthage for installation, ```IBDesignable``` and ```IBInspectable``` will not work due Xcode limitation. Details information can be found [here](https://github.com/Carthage/Carthage/issues/335).**
+
 ### Code
 Import KSNumericTextField if you are using CocoaPods or Carthage.
 ```swift
