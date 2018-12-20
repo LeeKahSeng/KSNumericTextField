@@ -51,7 +51,7 @@ import UIKit
     @objc optional func textFieldShouldReturn(_ textField: KSNumericTextField) -> Bool
     
     @available(iOS 10.0, *)
-    @objc optional func textFieldDidEndEditing(_ textField: KSNumericTextField, reason: UITextFieldDidEndEditingReason)
+    @objc optional func textFieldDidEndEditing(_ textField: KSNumericTextField, reason: UITextField.DidEndEditingReason)
 }
 
 public class KSNumericTextField: UITextField {
@@ -301,7 +301,7 @@ extension KSNumericTextField: UITextFieldDelegate {
     }
     
     @available(iOS 10.0, *)
-    public func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
+    public func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
         
         text = processStringAfterEndEditing(textField.text)
         

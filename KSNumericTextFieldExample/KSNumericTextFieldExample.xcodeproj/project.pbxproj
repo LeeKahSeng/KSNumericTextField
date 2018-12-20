@@ -12,7 +12,6 @@
 		F988AF26205D4F8B00C93F03 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F988AF24205D4F8B00C93F03 /* Main.storyboard */; };
 		F988AF28205D4F8B00C93F03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F988AF27205D4F8B00C93F03 /* Assets.xcassets */; };
 		F988AF2B205D4F8B00C93F03 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F988AF29205D4F8B00C93F03 /* LaunchScreen.storyboard */; };
-		F988AF3C205D505300C93F03 /* KSNumericTextField.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F988AF3D205D505300C93F03 /* KSNumericTextField.framework */; };
 		F988AF3F205D507F00C93F03 /* KSNumericTextField.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F988AF3E205D507F00C93F03 /* KSNumericTextField.framework */; };
 		F988AF40205D507F00C93F03 /* KSNumericTextField.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F988AF3E205D507F00C93F03 /* KSNumericTextField.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -49,7 +48,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F988AF3F205D507F00C93F03 /* KSNumericTextField.framework in Frameworks */,
-				F988AF3C205D505300C93F03 /* KSNumericTextField.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,11 +121,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Lee Kah Seng";
 				TargetAttributes = {
 					F988AF1C205D4F8B00C93F03 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Manual;
 					};
 				};
@@ -209,6 +208,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -216,6 +216,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -266,6 +267,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -273,6 +275,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -315,7 +318,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "d44838de-5bb5-48fc-83dc-e0dab10bf274";
 				PROVISIONING_PROFILE_SPECIFIER = "yeos_lee dev profile";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -332,7 +335,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.LeeKahSeng.KSNumericTextFieldExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
