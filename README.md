@@ -17,7 +17,7 @@ KSNumericTextField is a simple to use text field that only accept numeric value.
 ## Example
 Clone or download the source code and launch the project with ```KSNumericTextFieldExample.xcworkspace```. The example demonstrate how to configure KSNumericTextField using storyboard or code.
 
-![](README-Assets/demo.png)
+![](README-Assets/demo.gif)
 
 
 ## Installation
