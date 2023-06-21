@@ -56,7 +56,7 @@ import UIKit
 
 public class KSNumericTextField: UITextField {
     
-    public var numericTextFieldDelegate: KSNumericTextFieldDelegate?
+    public weak var numericTextFieldDelegate: KSNumericTextFieldDelegate?
     
     @IBInspectable public var maxIntegerDigit: Int = 3 {
         didSet {
